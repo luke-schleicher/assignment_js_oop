@@ -19,11 +19,33 @@ GAME.controller = {
 
       GAME.model.updateAsteroidPositions();
       GAME.view.renderAsteroids(GAME.model.asteroids);
-      GAME.model.ship.angle++;
     }, 15);
 
 
   },
+
+  updateDirection: function(pressedKey) {
+    GAME.model.updateDirection(pressedKey);
+  },
+  //   switch (pressedKey) {
+  //     // case 'ArrowUp':
+  //     //   if (model.direction !== 'down') {
+  //     //     model.direction = 'up';
+  //     //   }
+  //     //   break;
+  //     case 'ArrowRight':
+  //       GAME.model.direction = 'right';
+  //       break;
+  //     // case 'ArrowDown':
+  //     //   if (model.direction !== 'up') {
+  //     //     model.direction = 'down';
+  //     //   }
+  //     //   break;
+  //     case 'ArrowLeft':
+  //       model.direction = 'left';
+  //       break;
+  //   };
+  // },
 
 
 

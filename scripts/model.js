@@ -14,8 +14,8 @@ GAME.model = {
   Ship: function() {
     this.x = Math.floor(GAME.model.canvas.width / 2);
     this.y = Math.floor(GAME.model.canvas.height / 2);
-    this.angle = 45;
-    this.xVel= 0;
+    this.angle = 0;
+    this.xVel = 0;
     this.yVel = 0;
   },
 
@@ -63,6 +63,23 @@ GAME.model = {
       obj.y += this.canvas.height;
     } else if (obj.y > this.canvas.height) {
       obj.y -= this.canvas.height;
+    }
+  },
+
+  updateDirection: function(pressedKey) {
+    switch (pressedKey) {
+      case "ArrowLeft":
+        this.ship.angle -= 7;
+        break;
+      case "ArrowRight":
+        this.ship.angle += 7;
+        break;
+      case "ArrowUp":
+        this.ship.xVel -= Math.cos(this.ship.angle + 90) / 3;
+        // this.ship.x +=  * this.ship.xVel;
+        this.ship.yVel -= Math.sin(this.ship.angle + 90) / 3;
+        //  * this.ship.yVel;
+        break;
     }
   }
 

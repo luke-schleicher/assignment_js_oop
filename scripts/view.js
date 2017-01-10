@@ -5,6 +5,7 @@ GAME.view = {
   init: function() {
     this.canvas = document.getElementById('space');
     this.context = this.canvas.getContext("2d");
+    this.setGameBoardListener();
   },
 
   renderShip: function(ship) {
@@ -13,9 +14,10 @@ GAME.view = {
     this.context.rotate(ship.angle * Math.PI/180);
     this.context.font = "20px Arial";
     this.context.fillStyle = "white";
+    this.context.textAlign = "center";
+    this.context.textBaseline = "middle";
     this.context.fillText("A", 0, 0);
     this.context.restore();
-
   },
 
   renderAsteroids: function(asteroids) {
@@ -33,6 +35,12 @@ GAME.view = {
 
   clearCanvas: function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  },
+
+  setGameBoardListener: function() {
+    $(document).on('keydown', function(event) {
+      GAME.controller.updateDirection(event.originalEvent.code);
+    });
   },
 
 };
