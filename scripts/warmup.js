@@ -3,15 +3,41 @@ var WARMUP = {
   asteroids: [],
 
   init: function() {
-    var this.interval = setInterval(tic, 1000);
+    this.createAsteroids(10000);
+    this.benchmark();
+    // var self = this;
+    // this.interval = setInterval(function(){
+    //   self.asteroids.forEach(function(element) {
+    //     element.tic();
+    //     console.log(element.x, element.y);
+    //   });
+    // }, 1000);
   },
 
   Asteroid: function() {
-    this.x = 0;
-    this.y = 0;
-    this.xVel = 1;
-    this.yVel = 1;
+    this.x = Math.floor(Math.random() * 10);
+    this.y = Math.floor(Math.random() * 10);
+    this.xVel = Math.random();
+    this.yVel = Math.random();
   },
+
+  createAsteroids: function(numberOfAsteroids) {
+    var i = numberOfAsteroids;
+    while (i--) {
+      this.asteroids.push(new this.Asteroid());
+    };
+  },
+
+  benchmark: function() {
+    var start = Date.now();
+    this.asteroids.forEach(function(element) {
+      var i = 10000;
+      while (i--) {
+        element.tic();
+      }
+    });
+    console.log(Date.now() - start);
+  }
 
 };
 
@@ -20,5 +46,8 @@ WARMUP.Asteroid.prototype.tic = function() {
   this.y += this.yVel;
 };
 
-WARMUP.asteroids.push(new WARMUP.Asteroid());
-
+// NOTE:
+// Via prototypical lookup
+// 10,000 asteroids with 10,000 tics each = 494
+// Via isntance methods
+// 10,000 asteroids with 10,000 tics each = 1467
