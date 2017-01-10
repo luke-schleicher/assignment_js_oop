@@ -11,11 +11,11 @@ GAME.controller = {
   gameLoop: function() {
 
     this.interval = setInterval(function() {
-
+      GAME.model.updateShipPosition();
+      GAME.view.renderShip(GAME.model.ship);
       GAME.model.updateAsteroidPositions();
       GAME.view.renderAsteroids(GAME.model.asteroids);
-
-    }, 20);
+    }, 15);
 
 
   },

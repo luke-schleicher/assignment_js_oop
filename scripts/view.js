@@ -7,12 +7,18 @@ GAME.view = {
     this.context = this.canvas.getContext("2d");
   },
 
-  renderAsteroids: function(asteroids) {
+  renderShip: function(ship) {
     this.clearCanvas();
+    this.context.font = "10pt Arial";
+    this.context.fillStyle = "white";
+    this.context.rotate(ship.angle * Math.PI/180)
+    this.context.fillText("A", ship.x, ship.y);
+  },
+
+  renderAsteroids: function(asteroids) {
     asteroids.forEach(function(asteroid) {
       GAME.view.renderAsteroid(asteroid);
     });
-
   },
 
   renderAsteroid: function(asteroid) {
