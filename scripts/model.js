@@ -14,7 +14,7 @@ GAME.model = {
   Ship: function() {
     this.x = Math.floor(GAME.model.canvas.width / 2);
     this.y = Math.floor(GAME.model.canvas.height / 2);
-    this.angle = 360;
+    this.angle = 45;
     this.xVel= 0;
     this.yVel = 0;
   },

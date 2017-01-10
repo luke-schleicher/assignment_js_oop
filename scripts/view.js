@@ -8,11 +8,14 @@ GAME.view = {
   },
 
   renderShip: function(ship) {
-    this.clearCanvas();
-    this.context.font = "10pt Arial";
+    this.context.save();
+    this.context.translate(ship.x, ship.y);
+    this.context.rotate(ship.angle * Math.PI/180);
+    this.context.font = "20px Arial";
     this.context.fillStyle = "white";
-    this.context.rotate(ship.angle * Math.PI/180)
-    this.context.fillText("A", ship.x, ship.y);
+    this.context.fillText("A", 0, 0);
+    this.context.restore();
+
   },
 
   renderAsteroids: function(asteroids) {
