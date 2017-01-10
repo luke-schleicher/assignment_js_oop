@@ -3,7 +3,7 @@ var GAME = GAME || {};
 GAME.model = {
 
   asteroids: [],
-  currentLevel: 10,
+  currentLevel: 1,
 
   init: function() {
     this.createAsteroids(this.currentLevel);
@@ -22,7 +22,7 @@ GAME.model = {
   },
 
   createAsteroids: function(numberOfAsteroids) {
-    var i = numberOfAsteroids;
+    var i = numberOfAsteroids + 3;
     while (i--) {
       this.asteroids.push(new this.Asteroid());
     }
@@ -37,6 +37,17 @@ GAME.model = {
 };
 
 GAME.model.Asteroid.prototype.tic = function() {
+  var canvas = document.getElementById('space');
   this.x += this.xVel;
+  if (this.x < 0) {
+    this.x += canvas.width;
+  } else if (this.x > canvas.width) {
+    this.x -= canvas.width;
+  };
   this.y += this.yVel;
+  if (this.y < 0) {
+    this.y += canvas.height;
+  } else if (this.y > canvas.height) {
+    this.y -= canvas.height;
+  };
 };
