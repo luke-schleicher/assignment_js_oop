@@ -10,8 +10,8 @@ GAME.model = {
   },
 
   Asteroid: function() {
-    this.x = Math.floor(Math.random() * 10);
-    this.y = Math.floor(Math.random() * 10);
+    this.x = Math.floor(Math.random() * 100);
+    this.y = Math.floor(Math.random() * 100);
     this.xVel = Math.random();
     this.yVel = Math.random();
   },
