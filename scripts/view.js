@@ -2,8 +2,13 @@ var GAME = GAME || {};
 
 GAME.view = {
 
+  init: function() {
+    this.canvas = document.getElementById('space');
+    this.context = this.canvas.getContext("2d");
+  },
+
   renderAsteroids: function(asteroids) {
-    GAME.view.clearCanvas();
+    this.clearCanvas();
     asteroids.forEach(function(asteroid) {
       GAME.view.renderAsteroid(asteroid);
     });
@@ -11,18 +16,14 @@ GAME.view = {
   },
 
   renderAsteroid: function(asteroid) {
-    var canvas = document.getElementById('space');
-    var context = canvas.getContext("2d");
-    context.strokeStyle = "white";
-    context.beginPath();
-    context.arc(asteroid.x, asteroid.y, 10, 0, 2 * Math.PI);
-    context.stroke();
+    this.context.strokeStyle = "white";
+    this.context.beginPath();
+    this.context.arc(asteroid.x, asteroid.y, asteroid.size, 0, 2 * Math.PI);
+    this.context.stroke();
   },
 
   clearCanvas: function() {
-    var canvas = document.getElementById('space');
-    var context = canvas.getContext("2d");
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
 
 };

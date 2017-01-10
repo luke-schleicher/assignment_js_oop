@@ -4,6 +4,7 @@ GAME.controller = {
 
   init: function() {
     GAME.model.init();
+    GAME.view.init();
     this.gameLoop();
   },
 
