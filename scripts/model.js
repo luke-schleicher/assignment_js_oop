@@ -10,10 +10,15 @@ GAME.model = {
   },
 
   Asteroid: function() {
-    this.x = Math.floor(Math.random() * 100);
-    this.y = Math.floor(Math.random() * 100);
-    this.xVel = Math.random();
-    this.yVel = Math.random();
+    var canvas = document.getElementById('space');
+    this.x = Math.floor(Math.random() * canvas.width);
+    this.y = Math.floor(Math.random() * canvas.height);
+    this.xVel = GAME.model.randomVelocity();
+    this.yVel = GAME.model.randomVelocity();
+  },
+
+  randomVelocity: function() {
+    return (Math.random() / 3) * (Math.random() < 0.5 ? -1 : 1)
   },
 
   createAsteroids: function(numberOfAsteroids) {

@@ -14,7 +14,7 @@ GAME.controller = {
       GAME.model.updateAsteroidPositions();
       GAME.view.renderAsteroids(GAME.model.asteroids);
 
-    }, 50);
+    }, 20);
 
 
   },
