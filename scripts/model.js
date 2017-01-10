@@ -3,7 +3,7 @@ var GAME = GAME || {};
 GAME.model = {
 
   asteroids: [],
-  currentLevel: 1,
+  currentLevel: 10,
 
   init: function() {
     this.createAsteroids(this.currentLevel);
