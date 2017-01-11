@@ -75,10 +75,8 @@ GAME.model = {
         this.ship.angle += 7;
         break;
       case "ArrowUp":
-        this.ship.xVel -= Math.cos(this.ship.angle + 90) / 3;
-        // this.ship.x +=  * this.ship.xVel;
-        this.ship.yVel -= Math.sin(this.ship.angle + 90) / 3;
-        //  * this.ship.yVel;
+        this.ship.xVel -= (Math.cos((this.ship.angle + 90 / 180 * Math.PI)) / 7);
+        this.ship.yVel -= (Math.sin((this.ship.angle + 90 / 180 * Math.PI)) / 7);
         break;
     }
   }
